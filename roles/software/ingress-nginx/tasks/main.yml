@@ -1,0 +1,17 @@
+---
+- name: Install packages
+  dnf:
+    name: tar
+    state: latest
+    
+- name: Download helm3
+  get_url: 
+    url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    dest: /tmp/get_helm.sh
+    mode: '0700'
+
+- name: Install Helm3
+  command: /tmp/get_helm.sh
+
+- name: Install ingress-nginx
+  command: helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace

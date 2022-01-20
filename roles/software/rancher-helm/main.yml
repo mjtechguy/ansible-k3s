@@ -1,0 +1,8 @@
+---
+
+- name: Add helm repo
+  kubernetes.core.helm_repository:
+    name: rancher
+    repo_url: "https://releases.rancher.com/server-charts/stable"
+
+- name: 
